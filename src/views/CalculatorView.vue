@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 let count = ref(0)
+let modArray = ref([])
 let modValue = ref(0)
 let currentOperator = ref('')
 
@@ -15,16 +16,36 @@ function subtract(){
     currentOperator.value = '-'
 }
 
+function multiply(){
+    console.log('multiply')
+    currentOperator.value = '*'
+    console.log(currentOperator.value)
+}
+
+function divide(){
+    console.log('divide')
+    currentOperator.value = '%'
+    console.log(currentOperator.value)
+}
 
 function equals(){
+    modValue.value = parseInt(modArray.value.join(''))
+    console.log(modValue.value)
     if (currentOperator.value == '+'){
         console.log('performing addition')
-        console.log(modValue.value)
         count.value = count.value + modValue.value
     }
     else if (currentOperator.value == '-'){
         console.log('performing subtraction')
         count.value = count.value - modValue.value
+    }
+    else if (currentOperator.value == '*'){
+        console.log('performing multiplication')
+        count.value = count.value * modValue.value
+    }
+    else if (currentOperator.value == '%'){
+        console.log('performing division')
+        count.value =  Math.floor(count.value/modValue.value) 
     }
     else{
         console.log('no operator selected')
@@ -36,7 +57,9 @@ function clear(){
     currentOperator.value = ''
     count.value = 0
     modValue.value = 0
+    modArray.value = []
 }
+
 
 </script>
 
@@ -47,7 +70,7 @@ function clear(){
         {{ count }}
     </div>
     <div>
-        {{ modValue }} {{ currentOperator }}
+        {{ modArray }} {{ currentOperator }}
     </div>
     
     <div>
@@ -58,48 +81,59 @@ function clear(){
         <span>
             <button @click="subtract">-</button>
         </span>
+
+        <span>
+            <button @click="multiply">*</button>
+        </span>
+        
+        <span>
+            <button @click="divide">%</button>
+        </span>
+        <span>
+            <button @click="modArray.pop()">Back</button>
+        </span>
     </div>
 
     <div>
         <div>
             <span>
-                <button @click="modValue = 1">1</button>
+                <button @click="modArray.push('1')">1</button>
             </span>
             
             <span>
-                <button @click="modValue = 2">2</button>
+                <button @click="modArray.push('2')">2</button>
             </span>
 
             <span>
-                <button @click="modValue = 3">3</button>
+                <button @click="modArray.push('3')">3</button>
             </span>
         </div>
 
         <div>
             <span>
-                <button @click="modValue = 4">4</button>
+                <button @click="modArray.push('4')">4</button>
             </span>
             
             <span>
-                <button @click="modValue = 5">5</button>
+                <button @click="modArray.push('5')">5</button>
             </span>
 
             <span>
-                <button @click="modValue = 6">6</button>
+                <button @click="modArray.push('6')">6</button>
             </span>
         </div>
 
         <div>
             <span>
-                <button @click="modValue = 7">7</button>
+                <button @click="modArray.push('7')">7</button>
             </span>
             
             <span>
-                <button @click="modValue = 8">8</button>
+                <button @click="modArray.push('8')">8</button>
             </span>
 
             <span>
-                <button @click="modValue = 9">9</button>
+                <button @click="modArray.push('9')">9</button>
             </span>
         </div>
     </div>
@@ -118,6 +152,12 @@ function clear(){
 </template>
 
 <style>
+
+button{
+    width: 30%;
+    height: 30%;
+
+}
 
 #equalsBtn{
     width: 100%;
