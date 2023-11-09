@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Contact Us</h1>
-        <form>
+        <form @submit.prevent="submitForm">
             <div>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
