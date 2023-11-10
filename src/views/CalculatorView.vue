@@ -35,8 +35,9 @@ function divide(){
 }
 
 function equals(){
+    parseArrays()
     console.log(modValue.value)
-    if (modValue.value && modValue2.value){
+    if (modValue.value  && modValue2.value ){
         if (currentOperator.value == '+'){
             console.log('performing addition')
             count.value = modValue2.value + modValue.value
@@ -59,7 +60,6 @@ function equals(){
     }else{
         alert('Values not selected')
     }    
-
 }
 
 function parseArrays(){
@@ -101,75 +101,76 @@ function clear(){
         
         <div>
             <span>
-                <button @click="add">+</button>
+                <button class="btn btn-secondary" @click="add">+</button>
             </span>
-            
+                        
             <span>
-                <button @click="subtract">-</button>
+                <button class="btn btn-secondary" @click="subtract">-</button>
             </span>
 
             <span>
-                <button @click="multiply">*</button>
+                <button class="btn btn-secondary" @click="multiply">*</button>
             </span>
-            
+                        
             <span>
-                <button @click="divide">%</button>
+                <button class="btn btn-secondary" @click="divide">%</button>
             </span>
+
             <span>
-                <button @click="modStep ===0 ? modArray.pop(): modArray2.pop()">Back</button>
+                <button class="btn btn-danger" @click="modStep ===0 ? modArray.pop(): modArray2.pop()">Back</button>
             </span>
         </div>
 
         <div>
             <div>
                 <span>
-                    <button @click="modStep === 0 ? modArray.push('1') : modArray2.push('1')">1</button>
-                </span>
-                
-                <span>
-                    <button @click="modStep === 0 ? modArray.push('2') : modArray2.push('2')">2</button>
-                </span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('1') : modArray2.push('1')">1</button>
+                        </span>
+                        
+                        <span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('2') : modArray2.push('2')">2</button>
+                        </span>
 
-                <span>
-                    <button @click="modStep === 0 ? modArray.push('3') : modArray2.push('3')">3</button>
-                </span>
-            </div>
+                        <span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('3') : modArray2.push('3')">3</button>
+                        </span>
+                    </div>
 
-            <div>
-                <span>
-                    <button @click="modStep === 0 ? modArray.push('4') : modArray2.push('4')">4</button>
-                </span>
-                
-                <span>
-                    <button @click="modStep === 0 ? modArray.push('5') : modArray2.push('5')">5</button>
-                </span>
+                    <div>
+                        <span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('4') : modArray2.push('4')">4</button>
+                        </span>
+                        
+                        <span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('5') : modArray2.push('5')">5</button>
+                        </span>
 
-                <span>
-                    <button @click="modStep === 0 ? modArray.push('6') : modArray2.push('6')">6</button>
-                </span>
-            </div>
+                        <span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('6') : modArray2.push('6')">6</button>
+                        </span>
+                    </div>
 
-            <div>
-                <span>
-                    <button @click="modStep === 0 ? modArray.push('7') : modArray2.push('7')">7</button>
-                </span>
-                
-                <span>
-                    <button @click="modStep === 0 ? modArray.push('8') : modArray2.push('8')">8</button>
-                </span>
+                    <div>
+                        <span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('7') : modArray2.push('7')">7</button>
+                        </span>
+                        
+                        <span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('8') : modArray2.push('8')">8</button>
+                        </span>
 
-                <span>
-                    <button @click="modStep === 0 ? modArray.push('9') : modArray2.push('9')">9</button>
+                        <span>
+                            <button class="btn btn-primary" @click="modStep === 0 ? modArray.push('9') : modArray2.push('9')">9</button>
                 </span>
             </div>
         </div>
         
         <div>
             <span>
-                <button @click="equals" id="equalsBtn">=</button>
+                <button class="btn btn-warning" @click="equals" id="equalsBtn">=</button>
             </span>
             <span>
-                <button @click="clear" id="clearBtn">clear</button>
+                <button class="btn btn-danger" @click="clear" id="clearBtn">clear</button>
             </span>
         </div>
 
@@ -194,6 +195,12 @@ function clear(){
 button{
     width: 30%;
     height: 40%;
+}
+
+.btn-primary{
+    border: 1px solid black;
+    padding: 1em;
+    margin: 1px;
 }
 
 #equalsBtn{
